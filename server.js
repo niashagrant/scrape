@@ -12,9 +12,7 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// // // Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/scrapedb", { useNewUrlParser: true });
-
+// var db = require("./models");
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
@@ -27,5 +25,5 @@ app.get("/", function (req, res) {
 });
 
 app.listen(PORT, function () {
-  console.log("App running on port 3000!");
+  console.log("App running on http://localhost:" + PORT);
 });
