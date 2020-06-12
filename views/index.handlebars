@@ -9,20 +9,23 @@
     <div class="card">
         <div class="card-body">
             <div class="media">
-                <img class="align-self-center mr-3" src={{image}} alt="Generic placeholder image">
-                <div class="media-body">
-                    <a href={{link}}>
+                <a href={{link}}>
+                    <img class="align-self-center mr-3" src={{image}} alt="Generic placeholder image">
+                </a>
+                <div class="media-body align-self-center">
+                    <a href={{link}} style="text-decoration: none; color:black">
                         <h5 class="mt-0">{{title}}</h5>
                     </a>
+
                 </div>
-                <a href="#" class="card-link">Save Article</a>
-                <a href="#" class="card-link">Delete Article</a>
+                <div class="align-self-end" style="float: right;">
+                    <a href="#" class="card-link btn btn-outline-secondary">Delete Article</a>
+                    <a href="#" class="card-link btn btn-outline-info">Save Article</a>
+
+
+                </div>
             </div>
-            {{!-- <h5 class="card-title">Article title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Article link</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-           --}}
+
         </div>
     </div>
     {{/each}}

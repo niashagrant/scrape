@@ -47,6 +47,10 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/saved", function (req, res) {
+  res.render("saved");
+});
+
 // app.get("/scrape", function (req, res) {
 //   axios.get("https://politics.theonion.com/").then(function (response) {
 //     var $ = cheerio.load(response.data);
