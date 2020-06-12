@@ -5,14 +5,28 @@
 
         </div>
     </div>
+    {{#each article}}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Article title</h5>
+            <div class="media">
+                <img class="align-self-center mr-3" src={{image}} alt="Generic placeholder image">
+                <div class="media-body">
+                    <a href={{link}}>
+                        <h5 class="mt-0">{{title}}</h5>
+                    </a>
+                </div>
+                <a href="#" class="card-link">Save Article</a>
+                <a href="#" class="card-link">Delete Article</a>
+            </div>
+            {{!-- <h5 class="card-title">Article title</h5>
             <h6 class="card-subtitle mb-2 text-muted">Article link</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                 content.</p>
-            <a href="#" class="card-link">Save Article</a>
-            <a href="#" class="card-link">Delete Article</a>
+           --}}
         </div>
     </div>
+    {{/each}}
+
+
+    {{log article}}
 </div>
