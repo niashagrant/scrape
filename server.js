@@ -8,6 +8,10 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 app.use(express.static("public"));
 
+// Parse request body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -51,30 +55,21 @@ app.get("/saved", function (req, res) {
   res.render("saved");
 });
 
-// app.get("/scrape", function (req, res) {
-//   axios.get("https://politics.theonion.com/").then(function (response) {
-//     var $ = cheerio.load(response.data);
-//     // console.log(response.data);
-//     console.log("unicorn");
-//     var object = {};
-
-//     $("article.cw4lnv-0").each(function (i, element) {
-//       var object = {};
-
-//       object.title = $(this).find("h2.sc-759qgu-0").text();
-
-//       //   console.log(object.title);
-
-//       object.link = $(this).find("a.sc-1out364-0").attr("href");
-
-//       object.image = $(this).find("img").attr("src");
-
-//       //   console.log(object.summary);
-//       console.log(object);
-//     });
-//   });
-
-// });
+app.post("/saved", function (req, res) {
+  console.log("inside post route");
+  console.log("title: from routes ", req.body.saveArticle.title);
+  db.Article.create({
+    title: title,
+    link: link,
+    image: image,
+  })
+    .then(function (articledb) {
+      console.log(articledb);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
 
 app.listen(PORT, function () {
   console.log("App running on http://localhost:" + PORT);

@@ -10,17 +10,18 @@
         <div class="card-body">
             <div class="media">
                 <a href={{link}}>
-                    <img class="align-self-center mr-3" src={{image}} alt="Generic placeholder image">
+                    <img class="align-self-center mr-3 image" data-image="{{image}}" src={{image}}
+                        alt="Generic placeholder image">
                 </a>
                 <div class="media-body align-self-center">
-                    <a href={{link}} style="text-decoration: none; color:black">
-                        <h5 class="mt-0">{{title}}</h5>
+                    <a class="link" href={{link}} data-link="{{link}}" style="text-decoration: none; color:black">
+                        <h5 class="mt-0 title" data-title="{{title}}">{{title}}</h5>
                     </a>
 
                 </div>
                 <div class="align-self-end" style="float: right;">
-                    <a href="#" class="card-link btn btn-outline-secondary">Delete Article</a>
-                    <a href="#" class="card-link btn btn-outline-info">Save Article</a>
+
+                    <button class="card-link btn btn-outline-info saveArticle">Save Article</button>
 
 
                 </div>
