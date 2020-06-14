@@ -46,18 +46,22 @@ app.get("/", function (req, res) {
       //   console.log(object);
       articleArray.push(object);
     });
-    console.log(articleArray);
+    // console.log(articleArray);
     res.render("index", { article: articleArray });
   });
 });
 
 app.get("/saved", function (req, res) {
+  console.log("DID IT GET THIS: ", req.params.title);
   res.render("saved");
 });
 
 app.post("/saved", function (req, res) {
   console.log("inside post route");
-  console.log("title: from routes ", req.body.saveArticle.title);
+  console.log("title: from routes ", req.body);
+  var title = req.body.title;
+  var link = req.body.link;
+  var image = req.body.image;
   db.Article.create({
     title: title,
     link: link,
