@@ -52,8 +52,18 @@ app.get("/", function (req, res) {
 });
 
 app.get("/saved", function (req, res) {
-  console.log("DID IT GET THIS: ", req.params.title);
-  res.render("saved");
+  db.Article.find({})
+    .lean()
+    .populate("Note")
+    .then(function (dbArticle) {
+      // If we were able to successfully find an Article with the given id, send it back to the client
+      console.log(dbArticle);
+      res.render("saved", { article: dbArticle });
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 app.post("/saved", function (req, res) {
@@ -69,6 +79,17 @@ app.post("/saved", function (req, res) {
   })
     .then(function (articledb) {
       console.log(articledb);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+app.delete("/deleteArticle/:id", function (req, res) {
+  var articleID = req.params.id;
+  db.Article.remove({ _id: articleID })
+    .then(function () {
+      res.sendStatus(200);
     })
     .catch(function (err) {
       console.log(err);

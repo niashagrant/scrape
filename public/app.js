@@ -12,25 +12,10 @@ $("#scrape-btn").on("click", function () {
 $(document).on("click", ".saveArticle", function () {
   console.log("clicked");
 
-  var divs = document.querySelectorAll(".saveArticle"),
-    i;
-  for (i = 0; i < divs.length / 3; ++i) {
-    var title = $(".title").data("title");
-    var link = $(".link").data("link");
-    var image = $(".image").data("image");
-    var saveArticle = {
-      title: title,
-      link: link,
-      image: image,
-    };
+  var title = $(this).parent().parent().find(".title").text();
 
-    console.log(saveArticle);
-    console.log("========");
-  }
-
-  var title = $(".title").data("title");
-  var link = $(".link").data("link");
-  var image = $(".image").data("image");
+  var link = $(this).parent().parent().find(".link").attr("href");
+  var image = $(this).parent().parent().find(".image").attr("src");
 
   var saveArticle = {
     title: title,
@@ -53,8 +38,20 @@ $(document).on("click", ".saveArticle", function () {
       console.log("-----");
       console.log(err);
     });
+});
 
-  //   $.post("/saved", saveArticle, function (data) {
-  //     console.log("saved", data);
-  //   });
+$(document).on("click", ".seeNotes", function () {
+  $(this).parent().parent().parent().find(".hiddenNotes").toggle();
+});
+
+$(document).on("click", ".deleteArticle", function () {
+  var articleID = $(this).data("articleID");
+  console.log(articleID);
+  $.ajax({
+    method: "DELETE",
+    url: "/deleteArticle/" + articleID,
+  }).done(function (data) {
+    console.log(data);
+    window.location = "/saved";
+  });
 });

@@ -5,16 +5,38 @@
 
         </div>
     </div>
+    {{#each article}}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Article link</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Write a Note</a>
-            <a href="#" class="card-link">Delete Article</a>
+            <div class="media">
+                <a href={{link}}>
+                    <img class="align-self-center mr-3 image" src={{image}} alt="Generic placeholder image">
+                </a>
+                <div class="media-body align-self-center">
+                    <a class="link" href={{link}} style="text-decoration: none; color:black">
+                        <h5 class="mt-0 title">{{title}}</h5>
+                    </a>
+
+                </div>
+                <div class="align-self-end" style="float: right;">
+
+                    <button class="card-link" data-toggle="modal" data-target="#exampleModalCenter">Write a
+                        Note</button>
+                    <button class="seeNotes"> View Notes</button>
+                    <button class="deleteArticle" data-articleID={{_id}}>Delete Article</button>
+
+
+
+                </div>
+
+            </div>
+            <div class="hiddenNotes" style="display: none;">
+                <h1>hi there</h1>
+            </div>
+
         </div>
     </div>
+    {{/each}}
 </div>
 
 
@@ -23,7 +45,7 @@
     Launch demo modal
 </button> --}}
 
-<!-- Modal -->
+<!--Write note Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,6 +67,30 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save Note</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--See Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
