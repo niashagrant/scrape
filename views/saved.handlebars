@@ -20,8 +20,8 @@
                 </div>
                 <div class="align-self-end" style="float: right;">
 
-                    <button class="card-link writeNote seeNotes" data-toggle="modal"
-                        data-target="#exampleModalCenter">Write a
+                    <button class="card-link writeNote seeNotes" data-toggle="modal" data-target="#exampleModalCenter"
+                        data-articleID={{_id}}>Write a
                         Note</button>
 
                     <button class="deleteArticle" data-articleID={{_id}}>Delete Article</button>
@@ -34,7 +34,7 @@
             <div class="hiddenNotes" style="display: none;">
                 <h5 class="modal-title" id="exampleModalLongTitle">Write a note:</h5>
 
-                <form>
+                <form id="test">
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Note:</label>
                         <textarea class="form-control bodyinput" id="message-text"></textarea>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="showNotes" style="display:none">
-                <div id="notes">hi</div>
+                <div id="notes">Hello</div>
             </div>
 
         </div>
